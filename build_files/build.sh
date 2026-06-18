@@ -12,9 +12,6 @@ cp -avf "/ctx/system_files"/. /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux
-
 dnf5 install -y \
   niri \
   xwayland-satellite \
@@ -23,7 +20,7 @@ dnf5 install -y \
   waybar \
   mako \
   swaybg \
-  polkit-kde-agent \
+  polkit-kde-agent-1 \
   network-manager-applet \
   gnome-keyring \
   libsecret \
@@ -62,7 +59,7 @@ dnf5 install -y \
 ### DISPLAY MANAGER (minimal — greetd with text greeter) ###
 dnf5 install -y \
   greetd \
-  greetd-tuigreet
+  tuigreet
 
 ### FLATPAK SUPPORT ###
 dnf5 install -y \
@@ -71,8 +68,8 @@ dnf5 install -y \
 ### ENABLE SERVICES ###
 systemctl enable podman.socket
 systemctl enable greetd
-systemctl enable pipewire-socket-manager
-systemctl enable wireplumber
+systemctl --global enable pipewire.socket
+systemctl --global enable wireplumber
 
 ### SET greetd TO AUTO-START NIRI ###
 cat > /etc/greetd/config.toml << 'EOF'
@@ -96,6 +93,3 @@ dnf5 clean all
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
