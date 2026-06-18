@@ -2,4 +2,5 @@ cosign.key
 _build_*
 output
 _build-*/**
-my-experiment.env
+# Image-specific env file is now tracked — keep template/sample files here instead
+# my-experiment.env
