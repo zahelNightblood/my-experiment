@@ -15,5 +15,5 @@ cp -avf "/ctx/system_files"/. /
 dnf5 install -y niri \
 	fuzzel \
 	pavucontrol \
-	sddm
+	sddm \
     kitty
