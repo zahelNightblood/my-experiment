@@ -16,3 +16,4 @@ dnf5 install -y niri \
 	fuzzel \
 	pavucontrol \
 	sddm
+    kitty
