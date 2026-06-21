@@ -3,9 +3,8 @@
 set -ouex pipefail
 
 # Copy the contents of system_files/ of the git repo to /
-cp -avf "/ctx/system_files"/. /
+cp -avf "/ctx/system_files/shared"/. /
 
-rsync -rvK /ctx/system_files/shared/ /
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.

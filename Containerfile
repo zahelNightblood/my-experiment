@@ -1,7 +1,10 @@
 # Allow build scripts to be referenced without being copied into the final image
+
+FROM ghcr.io/ublue-os/brew:latest AS custom-brew
 FROM scratch AS ctx
 COPY build_files /
-COPY system_files /system_files
+COPY system_files /system_files/shared
+COPY --from=custom-brew /system_files /system_files/shared
 
 # Base Image
 FROM ghcr.io/ublue-os/base-main:latest
@@ -15,9 +18,6 @@ FROM ghcr.io/ublue-os/base-main:latest
 # Fedora base image: quay.io/fedora/fedora-bootc:44
 # CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
 
-FROM ghcr.io/ublue-os/brew:latest AS brew
-
-COPY --from=brew /system_files /system_files/shared
 
 ### [IM]MUTABLE /opt
 ## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to
