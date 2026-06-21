@@ -17,3 +17,5 @@ dnf5 install -y niri \
 	pavucontrol \
 	kitty \
 	ly
+
+systemctl enable ly@tty1.service
