@@ -16,4 +16,5 @@ dnf5 install -y niri \
 	fuzzel \
 	pavucontrol \
 	lightdm lightdm-gtk \
-	kitty
+	kitty \
+	ly
